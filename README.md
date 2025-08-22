@@ -176,7 +176,7 @@ helmApplicationList:
         - CreateNamespace=true
 ```
 ### Global
-|Key|Format|Description|
+|Key | Format | Description |
 --------------------------
 |defaultProject|String|The default project name|
 |defaultCommit|String|The default targetCommitRef|
@@ -188,14 +188,16 @@ helmApplicationList:
 ### helmApplicationList
 |Key|Format|Description|
 --------------------------
-|name|String|Application name|
-|overrideProject|String|Overrides the application project|
-|source.overrideRepo|String|Overrides the source repository key|
-|source.overrideCommit|String|Overrides the commitTargetRef|
-|source.overrideSourcePath|String|Overrides the chart path|
-|source.values.enable|bool|Enables custom value folder(Default true)|
-|source.values.overrideSourceValuesList|List<String>|Overrrides the sources values list|
-|source.values.extraValuesList|List<String>|Adds extra value files to the default option|
-|destination.overrideNamespace|String|Overrides the target namespace|
-|destination.overrideServer|String|Overrides the target server key|
-|syncPolicy|YAML Object|Sync policy yaml object|
+| Key                                   | Format         | Description                                         |
+|---------------------------------------|----------------|-----------------------------------------------------|
+| name                                  | String         | Application name                                    |
+| overrideProject                       | String         | Overrides the application project                   |
+| source.overrideRepo                   | String         | Overrides the source repository key                 |
+| source.overrideCommit                 | String         | Overrides the commitTargetRef                       |
+| source.overrideSourcePath             | String         | Overrides the chart path                            |
+| source.values.enable                  | bool           | Enables custom value folder (Default true)          |
+| source.values.overrideSourceValuesList| List<String>   | Overrides the sources values list                   |
+| source.values.extraValuesList         | List<String>   | Adds extra value files to the default option        |
+| destination.overrideNamespace         | String         | Overrides the target namespace                      |
+| destination.overrideServer            | String         | Overrides the target server key                     |
+| syncPolicy                            | YAML Object    | Sync policy yaml object                             |
