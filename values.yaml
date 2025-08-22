@@ -1,0 +1,91 @@
+global:
+  defaultProject: default
+  defaultCommit: head
+  defaultRepo: default
+  paths:
+    dirValues: ../../values
+    dirCharts: helm/charts
+  servers:
+    default: https://kubernetes.default.svc
+    qa-test: test-server
+  repos:
+    default: "<Your default repo>"
+    qa-test: test repo
+
+
+
+  # Example format
+  #  app name
+  # - name: example
+  #   # Override the default application argoproject
+  #   overrideProject: myapp
+  #   source: {}
+  #     # Overrride the default repo based on the global.repos (default is default)
+  #     # overrideRepo: "" # infra
+  #     # override the default target commit
+  #     # overrideCommit: ""
+  #     # override the soruce path(default assumes <global.paths.dirCharts>/<app name>)
+  #     # overrideSourcePath: ""
+  #   values: {}
+  #     # enable: true
+  #     # fully override the source values list
+  #     # overrideSourceValues: []
+  #     # add extravalues
+  #     # extraValues: []
+  #   destination: {}
+  #     # overrides the target namespace (default app name)
+  #     # overrideNamespace: ""
+  #     # override the default server based ont eh global.servers (default: default server)
+  #     # overrideServer: ""
+  #   syncPolicy:
+  #     automated: {}
+  #     syncOptions:
+  #       - CreateNamespace=true
+helmApplicationList:
+  - name: example
+    # Override the default application argoproject
+    overrideProject: myapp
+    source: {}
+      # Overrride the default repo based on the global.repos (default is default)
+      # overrideRepo: "" # infra
+      # # override the default target commit
+      # overrideCommit: ""
+      # # override the soruce path(default assumes <global.paths.dirCharts>/<app name>)
+      # overrideSourcePath: ""
+      # values:
+      #   enable: true
+      #   # fully override the source values list
+      #   overrideSourceValuesList: []
+      #   # add extravalues
+      #   extraValuesList: []
+    destination: {}
+      # overrides the target namespace (default app name)
+      # overrideNamespace: ""
+      # override the default server based ont eh global.servers (default: default server)
+      # overrideServer: ""
+    syncPolicy:
+      automated: {}
+      syncOptions:
+        - CreateNamespace=true
+      
+
+  # For testing
+  # - name: example
+  #   overrideProject: qa-test
+  #   source:
+  #     overrideRepo: qa-test # infra
+  #     overrideCommit: qa-test
+  #     overrideSourcePath: "different source path"
+  #   values:
+  #     enable: true
+  #     # If enabled override the values
+  #     overrideSourceValues: [ "qa-test"]
+  #     extraValues: ["qa-test extra"]
+  #   # destination: {}
+  #   destination: 
+  #     overrideNamespace: differnt ns
+  #     overrideServer: "qa-test"
+  #   syncPolicy:
+  #     automated: {}
+  #     syncOptions:
+  #       - CreateNamespace=true

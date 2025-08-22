@@ -1,0 +1,45 @@
+{{- $global := .Values.global -}}
+{{- range .Values.helmApplicationList }}
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: {{ .name }}
+spec:
+  project: {{ if .overrideProject -}}{{ .overrideProject }}{{- else -}}{{ $global.defaultProject }} {{- end }}
+  source:
+    repoURL: "{{ if .source.overrideRepo }}{{ index $global.repos .source.overrideRepo }}{{ else }}{{ index $global.repos $global.defaultRepo  }}{{ end }}"
+    targetRevision: "{{ default $global.defaultCommit  .source.overrideCommit}}"
+    path: "{{ default (printf "%s/%s" $global.paths.dirCharts .name) .source.overrideSourcePath}}"
+    {{- if (hasKey .source "values") }}
+    {{- if .source.values.enable }}
+    helm:
+      valueFiles:
+      {{- if .source.values.overrideSourceValuesList -}}
+      {{- range .source.values.overrideSourceValuesList }}
+      - {{ . }}
+      {{- end }}
+      {{- else }}
+      - "{{ $global.paths.dirValues }}/{{ .name }}"
+      {{- end }}
+      {{- if .source.values.extraValuesList }}
+      {{- range .source.values.extraValuesList }}
+      - {{ . }}
+      {{- end }}
+      {{- end }}
+    {{- end }}
+    {{- end -}}
+    {{/* Easier to add the default in the end */}}
+    {{- if not (hasKey .source "values") }}
+    helm:
+      valueFiles:
+      - "{{ $global.paths.dirValues }}/{{ .name }}"
+    {{- end}}
+  destination:
+    server: "{{ if .destination.overrideServer }}{{ index $global.servers .destination.overrideServer }}{{ else }}{{ index $global.servers "default" }}{{ end }}"
+    namespace: {{ default .name .destination.overrideNamespace }}
+  {{- if .syncPolicy }}
+  syncPolicy:
+{{ .syncPolicy | toYaml | indent 4 }}
+  {{- end}}
+{{- end }}
