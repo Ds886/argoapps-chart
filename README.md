@@ -176,18 +176,18 @@ helmApplicationList:
         - CreateNamespace=true
 ```
 ### Global
-|Key | Format | Description |
---------------------------
-|defaultProject|String|The default project name|
-|defaultCommit|String|The default targetCommitRef|
-|defaultRepo|String|The default repo key|
-|paths.dirValues|String|The default value folder path|
-|paths.dirCharts|String|The default chart folder path|
-|servers|Dictionary<String>|Dcitionary of the servers|
-|repos|Dictionary<String>|Dcitionary of the repositories|
+| Key             | Format              | Description                       |
+|-----------------|---------------------|-----------------------------------|
+| defaultProject  | String              | The default project name          |
+| defaultCommit   | String              | The default targetCommitRef       |
+| defaultRepo     | String              | The default repo key              |
+| paths.dirValues | String              | The default value folder path     |
+| paths.dirCharts | String              | The default chart folder path     |
+| servers         | Dictionary<String>  | Dictionary of the servers         |
+| repos           | Dictionary<String>  | Dictionary of the repositories    |
 ### helmApplicationList
-|Key|Format|Description|
---------------------------
+
+
 | Key                                   | Format         | Description                                         |
 |---------------------------------------|----------------|-----------------------------------------------------|
 | name                                  | String         | Application name                                    |
