@@ -5,6 +5,7 @@
 This is a centrlized Apps of apps chart.
 
 It asssumes a single repo with the directory structure
+````
 (root)
 |
 |----- helm
@@ -15,6 +16,7 @@ It asssumes a single repo with the directory structure
 |       |----- values
 |                |----- values-a
 |                |----- values-b
+````
 
 ## Example
 ### 3 tier app
